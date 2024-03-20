@@ -1,0 +1,2 @@
+# wordtestac
+GoogleAppsScriptとスプレッドシートを用いて作成した単語テストをしてくれるLINEbot。大学生版。
