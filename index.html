@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Quiz Web App</title>
+    <script>
+
+    // ボタンがクリックされたとき呼び出されるハンドラ
+    function onbtnclick(){
+
+      // html読み取り
+      var answer = document.getElementById("answer");
+      var btn = document.forms.uansForm.btn;
+      var uans = document.forms.uansForm.uans;
+      var torf = document.getElementById("torf");
+      
+
+      if(answer.style.visibility == "hidden"){
+        // 答えが表示されていないので、答えを表示しボタンを「次の問題」に
+        torf.style.visibility = "visible";
+        if(uans.value == answer.innerHTML){//正解
+         torf.innerHTML = "○正解！";
+         google.script.run.withSuccessHandler().getPoint(null, '英単語', null);
+        }else{//不正解
+         torf.innerHTML = "✕不正解！";
+        }
+        btn.value = "次の問題";
+        answer.style.visibility = "visible";
+      } else {
+        // 答えが表示されているので、問題・答えを取得して答えを非表示にしボタンを「答えを見る」に
+        new_quiz();
+        btn.value = "答えを見る";
+        uans.value = "";
+        torf.style.visibility = "hidden";
+        answer.style.visibility = "hidden";
+      }
+    }
+
+    // サーバ側スクリプトnew_quiz_sv()が実行成功したとき呼び出されるハンドラ
+    function onSuccess (res){
+
+      // html読み取り
+      var quiz = document.getElementById("quiz");
+      var answer = document.getElementById("answer");
+      var torf = document.getElementById("torf");
+
+      // 問題のセット
+      quiz.innerHTML = res[0];
+      // 回答のセット
+      answer.innerHTML = res[1];
+      answer.style.visibility = "hidden";
+      
+      torf.innerHTML = "✕不正解！";
+      torf.style.visibility = "hidden";
+      
+      
+
+    }
+
+    // サーバサイド関数を稼働させて、問題・答えを取得する関数
+    function new_quiz() {
+      google.script.run.withSuccessHandler(onSuccess).new_quiz_sv('英単語', 0, 0, 1);
+    }
+
+    </script>
+  </head>
+  <body>
+    <table style="width: 100%;" cellspacing="100" cellpadding="0">
+      <tbody>
+        <tr>
+          <td style="vertical-align: top;" align="left">
+            <div id="quiz" style="font-size: 100%;"><br></div>
+          </td>
+        </tr>
+        <tr>
+         <td style="vertical-align: top;" align="left">
+          <form name="uansForm" id="uansForm" action="onbtnclick();">
+            <input name="uans" id="uans" type="text" value="" />
+            <input type="button" id="btn" value="答えを見る" style="width: 50%; height: 100%; color: white; background: rgb(80, 184, 216) none repeat scroll 0% 0%; font-size: 100%;" onclick="onbtnclick();" />
+          </form>
+         </td>
+        </tr>
+        <tr>
+         <td style="vertical-align: top;" align="left">
+          <div id="torf" style="font-size: 100%;"></div>
+         </td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;" align="left">
+            <div id="answer" style="font-size: 100%;"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+
+    // 最初にHTMLが読み込まれたときに問題・答えを設定する
+    new_quiz();
+
+    </script>
+  </body>
+</html>
