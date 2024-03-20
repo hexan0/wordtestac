@@ -3,7 +3,7 @@
 //得点時得点書き込み
 function getPoint(userId, contents, qNum){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName(contents);
   var sheetUserData = sheetOpen.getSheetByName('UserData');
   var count_q = 1;
@@ -28,7 +28,7 @@ function getPoint(userId, contents, qNum){
 //番号追加
 function addQNum(sheetName,qNum){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName(sheetName);
   var write_r = sheet.getLastRow() +1;
   sheet.getRange("B" + write_r).setValue(qNum);
@@ -36,7 +36,7 @@ function addQNum(sheetName,qNum){
 //単語追加
 function addAns(sheetName,ans){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName(sheetName);
   var write_r = sheet.getLastRow();
   sheet.getRange("D" + write_r).setValue(ans);
@@ -44,7 +44,7 @@ function addAns(sheetName,ans){
 //説明追加
 function addQuiz(sheetName,quiz){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName(sheetName);
   var write_r = sheet.getLastRow();
   sheet.getRange("E" + write_r).setValue(quiz);
@@ -56,7 +56,7 @@ function addQuiz(sheetName,quiz){
 //UserDataの読み込み、rowはAから列文字指定、
 function readUserData(userId,row){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheetUserData = sheetOpen.getSheetByName('UserData');
   var max_r = sheetUserData.getLastRow();
   for(var r=2;userId!=sheetUserData.getRange("A" + r).getValue();r++){
@@ -72,7 +72,7 @@ function readUserData(userId,row){
 //UserDataの書き換え、rowはAから列文字指定、
 function writeUserData(userId,row,writeText){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheetUserData = sheetOpen.getSheetByName('UserData');
   var max_r = sheetUserData.getLastRow();
   for(var r=2;userId!=sheetUserData.getRange("A" + r).getValue();r++){

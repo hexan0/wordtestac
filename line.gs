@@ -1,7 +1,7 @@
 //LINEとやりとりするための関数を集めたファイル
 
 //LINEのアクセストークン
-var channel_access_token = "6dS4haNDiCRssA/ymC4KKl3BCJKNf5W1oM2GkGEU7qe/DALKx9BOhlbtvpAfog4HmJ2FIouplPK91yYV/0JCvtRaI1GujF/pBWkAXw8zmoneoHMk1YuNdmEy74RAEDll5qHLqlRSbWP+Gsrrrro2LwdB04t89/1O/w1cDnyilFU=";
+var channel_access_token = ACCESS_TOKEN;
 var headers = {
    "Content-Type": "application/json; charset=UTF-8",
    "Authorization": "Bearer " + channel_access_token

@@ -18,7 +18,7 @@ function new_quiz_sv(sheetName, min, max, way){
 
   // スプレッドシート処理
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName(sheetName);
   var max_r = sheet.getLastRow();
   var r,s,right_sel,s1,s2,s3,s4;
@@ -124,7 +124,7 @@ function new_duo_quiz(userId,min,max){
                        Developer:"L"
                     };
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName("DUO");
   var max_r = sheet.getLastRow() - 1;
   var r_row;
@@ -222,7 +222,7 @@ function new_quiz_line(userId,sheetName,min,max,way){
 //一覧表示
 function list(sheetName,min,max){
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheet = sheetOpen.getSheetByName(sheetName);
   var max_r = sheet.getLastRow() - 1;
   var r;
@@ -275,7 +275,7 @@ function ranking(userId){
                        Developer:"L"
                     };
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheetUserData = sheetOpen.getSheetByName('UserData');
   var max_r = sheetUserData.getLastRow();
   var userScore, rankingText, userRank;
@@ -328,7 +328,7 @@ function dRanking(){
                        Developer:"L"
                     };
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheetUserData = sheetOpen.getSheetByName('UserData');
   var max_r = sheetUserData.getLastRow();
   var rankingText = "";
@@ -371,7 +371,7 @@ function wRanking(userId){
                        Lastweek:"N"
                     };
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheetUserData = sheetOpen.getSheetByName('UserData');
   var max_r = sheetUserData.getLastRow();
   var userScore, userRank;

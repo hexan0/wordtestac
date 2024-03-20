@@ -15,7 +15,7 @@ function doGet(e) {
 function doPost(e) {
   var webhookData = JSON.parse(e.postData.contents).events[0];
   var sheetOpen = 
-    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/1OfwZqFLWpsVEB9IFHdt1qvIkiUJBTJ1P44vyt7KvjN4/');
+    SpreadsheetApp.openByUrl('https://docs.google.com/spreadsheets/d/'+SS);
   var sheetServerData = sheetOpen.getSheetByName('ServerData');
   var replyText=sheetServerData.getRange("B3").getValue();
   if(sheetServerData.getRange("B2").getValue()){
